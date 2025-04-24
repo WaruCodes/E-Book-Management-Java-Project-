@@ -19,7 +19,7 @@
 		</div>
 
 		<div class="col-md-3">
-			<a href="" class="btn btn-success">Login</a> <a href=""
+			<a href="" class="btn btn-success">Login</a> <a href="register.jsp"
 				class="btn btn-primary text-white">Register</a>
 
 		</div>

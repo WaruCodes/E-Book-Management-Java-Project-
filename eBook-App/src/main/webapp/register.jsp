@@ -8,6 +8,7 @@
 <title>EBook: Register</title>
 <%@include file="all_components/allCss.jsp"%>
 </head>
+<body style="background-color: #f0f1f2;">
 <body>
 	<%@include file="all_components/navbar.jsp"%>
 
@@ -15,7 +16,7 @@
 		<div class="row">
 			<div class="col-md-4 offset-md-4">
 				<div class="card">
-					<div class="card-body"></div>
+					<div class="card-body">
 					<form>
 					
 					<h4 class="text-center">Registration Page</h4>
@@ -53,5 +54,9 @@
 			</div>
 		</div>
 	</div>
+</div>
+
+<%@include file="all_components/footer.jsp"%>
+
 </body>
 </html>

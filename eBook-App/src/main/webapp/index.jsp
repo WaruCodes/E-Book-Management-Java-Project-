@@ -26,6 +26,10 @@
 		<h2 class="text-center text-danger">Ebook Management System</h2>
 	</div>
 
+<% Connection conn=DBConnect.getConn();
+out.println(conn);
+%>
+
 	<!-- Start Recent Books -->
 
 	<div class="container">

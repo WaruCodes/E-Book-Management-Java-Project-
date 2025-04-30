@@ -12,6 +12,13 @@ public class User {
 	private String city;
 	private String state;
 	private String pincode;
+	
+	
+	
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
@@ -74,7 +81,12 @@ public class User {
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", phno=" + phno
+				+ ", address=" + address + ", landmark=" + landmark + ", city=" + city + ", state=" + state
+				+ ", pincode=" + pincode + "]";
+	}
 	
 	
 

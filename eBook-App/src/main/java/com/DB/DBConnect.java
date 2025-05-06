@@ -11,7 +11,7 @@ public class DBConnect {
 		try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			conn=DriverManager.getConnection("jdbc:mysql://localhost:8080/eBook-App","root","password");
+			conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/eBook-App","root","password");
 			
 		} catch (Exception e)
 		{

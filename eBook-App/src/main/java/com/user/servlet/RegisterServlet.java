@@ -25,6 +25,13 @@ public class RegisterServlet extends HttpServlet {
 			String password=req.getParameter("password");
 			String check=req.getParameter("check");
 			
+			if (check == null) {
+                // Return to register page with error message
+                req.setAttribute("errorMsg", "Please accept terms and conditions");
+                req.getRequestDispatcher("register.jsp").forward(req, resp);
+                return;
+            }
+			
 			//System.out.println(name+" "+email+" "+phno+" "+password+" "+check);
 			
 			User us=new User();

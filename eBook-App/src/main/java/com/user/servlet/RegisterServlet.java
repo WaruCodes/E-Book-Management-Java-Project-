@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.DAO.UserDAOimpl;
 import com.DB.DBConnect;
@@ -25,13 +26,6 @@ public class RegisterServlet extends HttpServlet {
 			String password=req.getParameter("password");
 			String check=req.getParameter("check");
 			
-			if (check == null) {
-                // Return to register page with error message
-                req.setAttribute("errorMsg", "Please accept terms and conditions");
-                req.getRequestDispatcher("register.jsp").forward(req, resp);
-                return;
-            }
-			
 			//System.out.println(name+" "+email+" "+phno+" "+password+" "+check);
 			
 			User us=new User();
@@ -40,17 +34,32 @@ public class RegisterServlet extends HttpServlet {
 			us.setPhno(phno);
 			us.setPassword(password);
 			
-			UserDAOimpl dao=new UserDAOimpl(DBConnect.getConn());
-			boolean f=dao.userRegister(us);
-			if(f)
-			{
-				System.out.println("User Registration Success...");
-			}else {
-				System.out.println("Something Wrong on Server...");
-			}
+			HttpSession session=req.getSession();
 			
 			
-			
+			if (check == null) {
+				
+				UserDAOimpl dao=new UserDAOimpl(DBConnect.getConn());
+				boolean f=dao.userRegister(us);
+				if(f)
+				{
+					//System.out.println("User Registration Success...");
+					session.setAttribute("SuccessMsg", "Registration Success...");
+					resp.sendRedirect("register.jsp");
+					
+				}else {
+					//System.out.println("Something Wrong on Server...");
+					session.setAttribute("errorMsg", "Something Wrong on Server...");
+					resp.sendRedirect("register.jsp");
+						
+				}
+	               
+            }else {
+            	//System.out.println("Please check Agree terms & conditions");
+            	session.setAttribute("errorMsg", "Please check Agree terms & conditions");
+				resp.sendRedirect("register.jsp");
+            }
+					
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
